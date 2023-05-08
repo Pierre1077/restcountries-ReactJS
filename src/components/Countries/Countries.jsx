@@ -3,6 +3,7 @@ import axios from "axios";
 import Card from "../Card/Card";
 import Search from "../Search/Search";
 import Filter from "../Filter/Filter";
+import Visited from "../Visited/Visited";
 
 const Countries = () => {
     const [useData, setUseData] = useState([]);
@@ -14,6 +15,13 @@ const Countries = () => {
             setUseData(countries.data);
         });
     }, []);
+
+    const [visitedCountry, setVisitedCountry] = useState([]);
+
+    const handleVisitedCountry = (country) => {
+        setVisitedCountry([...visitedCountry, country]);
+        console.log(country)
+    };
 
     function handleSearch(query) {
         setSearched(query);
@@ -41,6 +49,8 @@ const Countries = () => {
                             continent={c.continents}
                             officialName={c.name.official}
                         />
+                        <button onClick={() => handleVisitedCountry(c)}>Add to visited countries</button>
+
                     </div>
                 ))}
         </div>

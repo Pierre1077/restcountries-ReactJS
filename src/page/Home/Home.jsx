@@ -1,10 +1,10 @@
 import React from 'react';
-import Countries from "../Countries/Countries";
+import Countries from "../../components/Countries/Countries";
 
 const Home = () => {
     return (
         <div>
-            <Countries />
+            <Countries/>
         </div>
     );
 };
