@@ -8,9 +8,14 @@ const Search = ({ onSearch }) => {
         const query = event.target.value;
         if (query !== "") {
             axios.get(`https://restcountries.com/v3.1/name/${query}`).then((response) => {
-                setSearchDataCountry(response.data);
-                onSearch(query); // appelle la fonction onSearch passée en tant que prop
-            });
+
+                    setSearchDataCountry(response.data);
+                    onSearch(query);
+
+            })
+                .catch((error) => {
+                    setSearchDataCountry([]);
+                });
         } else {
             setSearchDataCountry([]);
             onSearch(""); // appelle la fonction onSearch avec une chaîne vide

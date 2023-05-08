@@ -30,7 +30,7 @@ const Countries = () => {
             <Filter onFilter={handleFilter}/>
             {useData
                 .filter((c) => c.name.common.toLowerCase().includes(searched.toLowerCase()))
-                .filter((c) => checked === "" || c.continents.includes(checked))
+                .filter((c) => checked === "" || checked === "All" || c.continents.includes(checked))
                 .map((c, index) => (
                     <div key={index}>
                         <Card
