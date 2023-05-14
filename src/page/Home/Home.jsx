@@ -51,7 +51,6 @@ const Home = ({handleCountryVisited, handleButtonClick}) => {
     return (
 
         <div>
-            <Button content="add me!" onClick={() => handleButtonClick('add to visited')} />
             <Search onSearch={handleSearch} />
             <Filter onFilter={handleFilter} />
             {useData
@@ -78,7 +77,7 @@ const Home = ({handleCountryVisited, handleButtonClick}) => {
                                     capital={c.capital}
                                     continent={c.continents}
                                     officialName={c.name.official}
-                                    visited='true'
+                                    visited={c.visited}
                                 />
                             );
                             toggleVisited(c)
