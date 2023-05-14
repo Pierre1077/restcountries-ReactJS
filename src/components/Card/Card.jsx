@@ -14,7 +14,7 @@ const Card = ({name, flag, flagAlt, capital, continent, officialName}) => {
     }
 
     return (
-        <div>
+        <div  className={'countries'}>
             <div onClick={show}>
                 <p>{name}</p>
                 <img src={flag} alt={flagAlt} width="100"/>

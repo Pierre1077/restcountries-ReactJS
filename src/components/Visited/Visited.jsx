@@ -1,17 +1,21 @@
-import React, {useState} from 'react';
+import React from 'react';
 
-const Visited = ({onVisited}) => {
+const Visited = ({visitedCountries}) => {
 
-    const [visitedCountry, setVisitedCountry] = useState([])
 
-    function addVisited(country) {
-        setVisitedCountry(country)
-    }
+
     return (
         <div>
-            <div>
-                <button onClick={() => addVisited(visitedCountry)}>FLAG</button>
-            </div>
+            <h2>Components Visited Countries</h2>
+            {visitedCountries?.length === 0 ? (
+                <p>No countries visited yet</p>
+            ) : (
+                <ul>
+                    {visitedCountries?.map((country, index) => (
+                        <li key={index}>{country.name.common}</li>
+                    ))}
+                </ul>
+            )}
         </div>
 
     );
