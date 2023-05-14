@@ -1,9 +1,12 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {NavLink} from "react-router-dom";
 
-const Navigation = () => {
+const Navigation = ({visitedCountries}) => {
+    const [selectedCountry, setSelectedCountry] = useState(visitedCountries);
+
     return (
         <div>
+
             <ul>
                 <NavLink to="/">
                     <li>Home</li>

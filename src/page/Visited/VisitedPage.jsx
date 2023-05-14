@@ -1,21 +1,19 @@
-import React, {useState} from "react";
-import Visited from "../../components/Visited/Visited";
-import Button from "../../components/Button/Button";
+import React from 'react';
+import Card from "../../components/Card/Card";
 
-
-const VisitedPage = ({ visitedCountries, buttons }) => {
-
-    const [selectedCountry, setSelectedCountry] = useState(visitedCountries);
+const VisitedPage = () => {
+    const visitedCountries = JSON.parse(localStorage.getItem('visitedCountries')) || [];
 
     return (
         <div>
-            <h2>Page Visited Countries</h2>
-
-            {/*<Visited visitedCountries={visitedCountries} />*/}
-            {selectedCountry.map((button, index) => (
-                <div key={index}>{button}</div>
+            <h1>Visited Countries</h1>
+            {visitedCountries.map((country, index) => (
+                <div key={index}>
+                    <div>
+                        <Card key={index} {...country.props} />
+                    </div>
+                </div>
             ))}
-
         </div>
     );
 };

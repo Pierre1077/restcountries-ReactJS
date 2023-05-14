@@ -12,15 +12,20 @@ const Home = ({handleCountryVisited, handleButtonClick}) => {
     const [searched, setSearched] = useState("");
     const [checked, setChecked] = useState("");
 
-    const [textAddVisited, setTextAddVisited] = useState('Add to visited')
 
     useEffect(() => {
-        axios.get("https://restcountries.com/v3.1/all").then((countries) => {
-            const dataWithVisited = countries.data.map((c) => ({ ...c, visited: false }));
-            setUseData(dataWithVisited);
-            // console.log(dataWithVisited)
-        });
+        const storedData = localStorage.getItem('useData');
+        if (storedData) {
+            setUseData(JSON.parse(storedData));
+        } else {
+            axios.get("https://restcountries.com/v3.1/all").then((countries) => {
+                const dataWithVisited = countries.data.map((c) => ({ ...c, visited: false }));
+                setUseData(dataWithVisited);
+            });
+        }
     }, []);
+
+
 
     function handleSearch(query) {
         setSearched(query);
@@ -33,10 +38,13 @@ const Home = ({handleCountryVisited, handleButtonClick}) => {
 
     function toggleVisited(country) {
         const updatedData = useData.map((c) =>
-             c.name.common === country.name.common ? { ...c, visited: !c.visited } : c
+            c.name.common === country.name.common ? { ...c, visited: !c.visited } : c
         );
         setUseData(updatedData);
+        localStorage.setItem('useData', JSON.stringify(updatedData)); // Stocke l'état useData dans localStorage
     }
+
+
 
 
 
@@ -73,7 +81,6 @@ const Home = ({handleCountryVisited, handleButtonClick}) => {
                                     visited='true'
                                 />
                             );
-                            console.log('change!');
                             toggleVisited(c)
                         }}>
                             {c.visited ? "Visited" : "Add to visited countries"}
