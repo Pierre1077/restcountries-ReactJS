@@ -2,26 +2,23 @@ import React, { useEffect, useState  } from 'react';
 import Detail from "../Detail/Detail";
 import './Card.css'
 
-const Card = ({name, flag, flagAlt, capital, continent, officialName}) => {
-    const [showDetail, setShowDetail] = useState(false);
+const Card = ({name, flag, flagAlt, capital, continent, officialName, buttonText, onVisited }) => {
 
-    function show() {
-        setShowDetail(true);
-    }
-
-    function hide() {
-        setShowDetail(false);
-    }
 
     return (
-        <div  className={'countries'}>
-            <div onClick={show}>
-                <p>{name}</p>
-                <img src={flag} alt={flagAlt} width="100"/>
-            </div>
-            <div className={showDetail ? 'show' : 'hide'}>
-                <Detail capital={capital} continent={continent} officialName={officialName}/>
-                <button onClick={hide}>Hide</button>
+        <div  className={'card__container'}>
+            <img
+                src={flag}
+                alt={flagAlt}
+                className={'flag'}
+            />
+            <div className={'card__content'}>
+                <h2 className={'name'}>{name}</h2>
+                {buttonText !== '' ?
+                    <button onClick={onVisited}>
+                        {buttonText}
+                    </button>
+                    : ''}
             </div>
         </div>
     );

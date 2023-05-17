@@ -1,0 +1,29 @@
+ul {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  align-items: center;
+  height: 10vh;
+
+  a {
+    text-decoration: none;
+    color: #151519;
+    position: relative;
+     &::after {
+       content: '';
+       position: absolute;
+       bottom: -5px;
+       left: 0;
+       height: 2px;
+       width: 100%;
+       background: #1cb8e8;
+     }
+
+    li {
+      list-style: none;
+      font-size: 20px;
+      font-weight: 600;
+
+    }
+  }
+}

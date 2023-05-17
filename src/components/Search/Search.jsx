@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
+import './Search.css'
 
 const Search = ({ onSearch }) => {
     const [searchDataCountry, setSearchDataCountry] = useState([]);
@@ -23,9 +24,8 @@ const Search = ({ onSearch }) => {
     }
 
     return (
-        <div>
-            <input type="search" placeholder="Search..." onChange={searchCountry} />
-
+        <div className={'search__container'}>
+            <input type="search" placeholder="Search a specific country..." onChange={searchCountry} />
         </div>
     );
 };

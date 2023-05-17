@@ -1,0 +1,18 @@
+.search__container {
+  display: flex;
+}
+.search__container input {
+  border: solid 2px #1cb8e8;
+  padding: 5px;
+  border-radius: 8px;
+  color: #1cb8e8;
+  width: 300px;
+}
+.search__container input:focus {
+  outline: none;
+}
+.search__container input::placeholder {
+  color: #1cb8e8;
+}
+
+/*# sourceMappingURL=Search.css.map */

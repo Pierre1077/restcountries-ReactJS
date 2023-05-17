@@ -1,0 +1,21 @@
+.search__container {
+  display: flex;
+
+  input {
+    border: solid 2px #1cb8e8;
+    padding: 5px;
+    border-radius: 8px;
+    color: #1cb8e8;
+    width: 300px;
+
+  &:focus {
+    outline: none;
+  }
+
+    &::placeholder {
+      color: #1cb8e8;
+
+    }
+  }
+}
+

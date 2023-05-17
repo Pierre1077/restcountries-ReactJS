@@ -1,0 +1,21 @@
+.filter__container .toggleFilter {
+  display: flex;
+  align-items: center;
+  margin: 5px 0 10px 0;
+}
+.filter__container .toggleFilter i {
+  font-size: 20px;
+}
+.filter__container .filter__wrapper .filter__item {
+  display: flex;
+  gap: 10px;
+  margin: 0 auto;
+}
+.filter__container .filter__wrapper .filter__item .filter__label {
+  font-size: 20px;
+}
+.filter__container .filter__wrapper .filter__item .filter__input input {
+  accent-color: #1cb8e8;
+}
+
+/*# sourceMappingURL=Filter.css.map */

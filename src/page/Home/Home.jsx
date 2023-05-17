@@ -5,6 +5,7 @@ import Search from "../../components/Search/Search";
 import Filter from "../../components/Filter/Filter";
 import Card from "../../components/Card/Card";
 import axios from "axios";
+import './Home.css'
 
 const Home = ({handleCountryVisited, handleButtonClick}) => {
 
@@ -51,44 +52,47 @@ const Home = ({handleCountryVisited, handleButtonClick}) => {
     return (
 
         <div>
-            <Search onSearch={handleSearch} />
-            <Filter onFilter={handleFilter} />
-            {useData
-                .filter((c) => c.name.common.toLowerCase().includes(searched.toLowerCase()))
-                .filter((c) => checked === "" || checked === "All" || c.continents.includes(checked))
-                .map((c, index) => (
-                    <div key={index}>
-                        <Card
+            {localStorage.clear}
+            <div className={'navigation__container'}>
+                <Search onSearch={handleSearch} />
+                <Filter onFilter={handleFilter} />
+            </div>
+            <div className={'countries__container'}>
+                {useData
+                    .filter((c) => c.name.common.toLowerCase().includes(searched.toLowerCase()))
+                    .filter((c) => checked === "" || checked === "All" || c.continents.includes(checked))
+                    .map((c, index) => (
+                        <div key={index}>
+                            <Card
 
-                            name={c.name.common}
-                            flag={c.flags.svg}
-                            flagAlt={c.flags.alt}
-                            capital={c.capital}
-                            continent={c.continents}
-                            officialName={c.name.official}
-                            visited={c.visited}
-                        />
-                        <button onClick={() =>{
-                            handleCountryVisited(
-                                <Card
-                                    name={c.name.common}
-                                    flag={c.flags.svg}
-                                    flagAlt={c.flags.alt}
-                                    capital={c.capital}
-                                    continent={c.continents}
-                                    officialName={c.name.official}
-                                    visited={c.visited}
-                                />
-                            );
-                            toggleVisited(c)
-                        }}>
-                            {c.visited ? "Visited" : "Add to visited countries"}
-                        </button>
-                    </div>
-                ))}
-            <div>
-
-                {/*<Countries onClick={() => console.log('salut')}/>*/}
+                                name={c.name.common}
+                                flag={c.flags.svg}
+                                flagAlt={c.flags.alt}
+                                capital={c.capital}
+                                continent={c.continents}
+                                officialName={c.name.official}
+                                visited={c.visited}
+                                buttonText={c.visited ? <i class="fa-solid fa-flag visited-flag"></i> : <i class="fa-solid fa-flag unvisited-flag"></i>}
+                                onVisited={
+                                    () =>{
+                                        handleCountryVisited(
+                                            <Card
+                                                name={c.name.common}
+                                                flag={c.flags.svg}
+                                                flagAlt={c.flags.alt}
+                                                capital={c.capital}
+                                                continent={c.continents}
+                                                officialName={c.name.official}
+                                                visited={c.visited}
+                                                buttonText={''}
+                                            />
+                                        );
+                                        toggleVisited(c)
+                                    }
+                                }
+                            />
+                        </div>
+                    ))}
             </div>
         </div>
     );

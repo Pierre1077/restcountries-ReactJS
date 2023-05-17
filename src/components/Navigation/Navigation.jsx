@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import {NavLink} from "react-router-dom";
+import './Navigation.css'
 
 const Navigation = ({visitedCountries}) => {
     const [selectedCountry, setSelectedCountry] = useState(visitedCountries);
